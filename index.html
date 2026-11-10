@@ -28,7 +28,7 @@ img{display:block;max-width:100%}
 section,header{scroll-margin-top:0}
 
 /* ---------- grão global ---------- */
-.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.075;background-image:var(--noise);background-size:160px 160px;animation:grain 1.1s steps(6) infinite;mix-blend-mode:screen}
+.grain{position:fixed;inset:-25%;z-index:90;pointer-events:none;opacity:.06;background-image:var(--noise);background-size:160px 160px;animation:grain 1.4s steps(5) infinite;will-change:transform}
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-6%,-2%)}80%{transform:translate(5%,4%)}100%{transform:translate(0,0)}}
 
 /* ---------- cursor ---------- */
@@ -68,6 +68,7 @@ body.has-cursor .cur,body.has-cursor .ring{opacity:1}
 .nav ul a:hover::after{right:0}
 
 /* ---------- hero ---------- */
+.hero.off .mb-l div,.hero.off .mb-art .sl,.hero.off .mb-cur,.hero.off .fr-img,.hero.off .mb-r b::after{animation-play-state:paused}
 .hero{position:relative;min-height:min(100svh,940px);padding:96px clamp(12px,3vw,40px) 36px;display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,26vw) minmax(0,1fr);grid-template-rows:auto auto;grid-template-areas:"cam ask mac" "cam shop mac";align-items:center;overflow:hidden;isolation:isolate}
 .hero-bg{position:absolute;inset:0;z-index:-1;background:
   radial-gradient(520px 420px at var(--mx,50%) var(--my,45%),rgba(241,238,232,.075),transparent 70%),
@@ -633,7 +634,9 @@ function fit(){
 window.addEventListener('resize',fit); fit();
 
 var t0=performance.now();
+var heroVisible=true, running=true;
 function frame(t){
+  if(!heroVisible||document.hidden){ running=false; return; }
   mx+=(tmx-mx)*.06; my+=(tmy-my)*.06;
   rigs.forEach(function(r){
     r.h+=((r.hov?1:0)-r.h)*.08;
@@ -647,6 +650,11 @@ function frame(t){
   });
   requestAnimationFrame(frame);
 }
+function wake(){ if(!running){ running=true; requestAnimationFrame(frame); } }
+if('IntersectionObserver' in window){
+  new IntersectionObserver(function(en){ heroVisible=en[0].isIntersecting; hero.classList.toggle('off',!heroVisible); if(heroVisible) wake(); },{threshold:0}).observe(hero);
+}
+document.addEventListener('visibilitychange',function(){ if(!document.hidden) wake(); });
 requestAnimationFrame(frame);
 
 /* ---------- clique: transição de obturador ---------- */

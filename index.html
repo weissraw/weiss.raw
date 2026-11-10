@@ -383,8 +383,8 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;margin
     <div class="canvasbox">
       <span class="prev-meta" id="meta">IMG_4099 — original</span>
       <div class="prev" id="prev" data-ed="0" data-pw="1">
-        <img class="pb" id="pb" src="img/IMG_4099.jpg" alt="Foto original: jogador de costas com a bola sobre a cabeça">
-        <img class="pe" id="pe" src="img/editada.jpg" alt="Foto editada: radial blur, grão e contraste">
+        <img class="pb" id="pb" src="IMG_4099.jpg" alt="Foto original: jogador de costas com a bola sobre a cabeça">
+        <img class="pe" id="pe" src="editada.jpg" alt="Foto editada: radial blur, grão e contraste">
         <div class="pw">weiss<s>.</s>raw</div>
       </div>
     </div>
@@ -445,21 +445,21 @@ var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySele
 
 /* ---------- fotos (troque aqui pelas suas) ---------- */
 var PHOTOS=[
-  {src:'img/foto3.jpg', alt:'Jogador de costas com a bola sobre a cabeça e radial blur', cap:'radial / destaque'},
-  {src:'img/foto6.jpg', alt:'Retrato de jogador de camisa amarela correndo, com fundo desfocado', cap:'foco / corrida'},
-  {src:'img/foto7.jpg', alt:'Carrinho em preto e branco com a bola colorida em destaque', cap:'bola / destaque'},
-  {src:'img/foto1.jpg', alt:'Dois jogadores disputando a bola na chuva, um de verde e outro de preto', cap:'disputa / chuva'},
-  {src:'img/foto11.jpg', alt:'Retrato de atleta em preto e branco com a camisa em laranja e detalhes de lances', cap:'retrato / camisa'},
-  {src:'img/foto10.jpg', alt:'Jogada acrobática com blur de movimento', cap:'voo / movimento'},
-  {src:'img/foto5.jpg', alt:'Detalhe da camisa verde neon de um jogador, com sombras fortes', cap:'camisa / luz'},
-  {src:'img/foto2.jpg', alt:'Disputa de bola com desfoque de movimento', cap:'contato / movimento'},
-  {src:'img/foto9.jpg', alt:'Cartaz Copa Litoral 2026 em preto e branco com textura de plástico', cap:'cartaz / copa litoral'},
-  {src:'img/foto8.jpg', alt:'Jogador de camisa amarela em preto e branco, com a cor só na camisa', cap:'cor / seleção'},
-  {src:'img/foto4.jpg', alt:'Detalhe da bola de jogo com fundo desfocado', cap:'bola / detalhe'},
-  {src:'img/foto12.jpg', alt:'Comemoração em grupo em preto e branco com blur e grão', cap:'grupo / comemoração'}
+  {src:'foto3.jpg', alt:'Jogador de costas com a bola sobre a cabeça e radial blur', cap:'radial / destaque'},
+  {src:'foto6.jpg', alt:'Retrato de jogador de camisa amarela correndo, com fundo desfocado', cap:'foco / corrida'},
+  {src:'foto7.jpg', alt:'Carrinho em preto e branco com a bola colorida em destaque', cap:'bola / destaque'},
+  {src:'foto1.jpg', alt:'Dois jogadores disputando a bola na chuva, um de verde e outro de preto', cap:'disputa / chuva'},
+  {src:'foto11.jpg', alt:'Retrato de atleta em preto e branco com a camisa em laranja e detalhes de lances', cap:'retrato / camisa'},
+  {src:'foto10.jpg', alt:'Jogada acrobática com blur de movimento', cap:'voo / movimento'},
+  {src:'foto5.jpg', alt:'Detalhe da camisa verde neon de um jogador, com sombras fortes', cap:'camisa / luz'},
+  {src:'foto2.jpg', alt:'Disputa de bola com desfoque de movimento', cap:'contato / movimento'},
+  {src:'foto9.jpg', alt:'Cartaz Copa Litoral 2026 em preto e branco com textura de plástico', cap:'cartaz / copa litoral'},
+  {src:'foto8.jpg', alt:'Jogador de camisa amarela em preto e branco, com a cor só na camisa', cap:'cor / seleção'},
+  {src:'foto4.jpg', alt:'Detalhe da bola de jogo com fundo desfocado', cap:'bola / detalhe'},
+  {src:'foto12.jpg', alt:'Comemoração em grupo em preto e branco com blur e grão', cap:'grupo / comemoração'}
 ];
 PHOTOS.forEach(function(p,i){ p.n=('00'+(i+1)).slice(-3); });
-var ORIGINAL='img/IMG_4099.jpg';
+var ORIGINAL='IMG_4099.jpg';
 
 /* ================= BUILDERS 3D ================= */
 function el(cls,css,parent){var d=document.createElement('div'); if(cls) d.className=cls; if(css) d.style.cssText=css; if(parent) parent.appendChild(d); return d;}

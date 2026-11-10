@@ -150,7 +150,7 @@ body.has-cursor .cur,body.has-cursor .ring{opacity:1}
 .mb-w{position:absolute;right:8px;bottom:6px;font:600 6px var(--display);letter-spacing:-.02em;opacity:.7;z-index:3}
 .mb-w s{color:var(--amber);text-decoration:none}
 
-.keys{position:absolute;left:20px;right:20px;top:16px;height:106px;padding:5px;background:#0d0d0f;border-radius:4px;display:grid;grid-template-columns:repeat(14,1fr);grid-template-rows:repeat(5,1fr);gap:3px;box-shadow:inset 0 0 0 1px #000}
+.keys{position:absolute;left:20px;right:20px;top:16px;height:106px;border-radius:4px;background-color:#1a1a1d;background-image:linear-gradient(90deg,#0d0d0f 3px,transparent 3px),linear-gradient(0deg,#0d0d0f 3px,transparent 3px);background-size:calc(100%/14) calc(100%/5);box-shadow:inset 0 0 0 3px #0d0d0f,0 0 0 1px #000}
 .keys i{background:#1a1a1d;border-radius:2px;box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
 .keys i.sp{grid-column:4 / 11}
 .pad{position:absolute;left:50%;bottom:12px;width:116px;height:66px;transform:translateX(-50%);background:#202024;border-radius:5px;box-shadow:inset 0 0 0 1px #2e2e33}
@@ -516,22 +516,22 @@ function buildCamera(root){
   });
   box(root,38,5,40,'translate3d(0,-145px,-4px)',{all:'background:linear-gradient(#9a9a9f,#5b5b60);',top:'background:linear-gradient(#b4b4b9,#7b7b80);'});
   /* disco de modo */
-  var dial=cylY(root,22,14,20,'translate3d(100px,-102px,-14px)',function(i,a){return gray(lum(a,10,14));});
+  var dial=cylY(root,22,14,10,'translate3d(100px,-102px,-14px)',function(i,a){return gray(lum(a,10,14));});
   el('f',place(44,44,'translateY(-7px) rotateX(90deg)')+'border-radius:50%;background:repeating-conic-gradient(#2c2c31 0 12deg,#1b1b1e 12deg 24deg);box-shadow:inset 0 0 0 2px #38383d',dial);
   /* botão do obturador */
-  var sh=cylY(root,13,9,14,'translate3d(-112px,-99px,56px)',function(i,a){return gray(lum(a,8,16),30,45);});
+  var sh=cylY(root,13,9,8,'translate3d(-112px,-99px,56px)',function(i,a){return gray(lum(a,8,16),30,45);});
   el('f',place(26,26,'translateY(-4.5px) rotateX(90deg)')+'border-radius:50%;background:radial-gradient(circle at 40% 35%,#e0a05c,#C77B30 55%,#7a4a1c);',sh);
 
   /* lente */
   var L=el('g3','transform:translate3d(0,10px,0);',root);
-  cylZ(L,70,14,48,'translateZ(62px)',function(i,a){return gray(lum(a,26,34),220,6);});             /* anel de montagem prateado */
-  cylZ(L,62,86,48,'translateZ(110px)',function(i,a){return gray(lum(a,5,10))+'background-image:repeating-linear-gradient(to bottom,rgba(255,255,255,.05) 0 1px,transparent 1px 7px);';});
-  cylZ(L,68,48,56,'translateZ(118px)',function(i,a){return gray(lum(a,i%2?4:9,i%2?6:16));});            /* anel de foco serrilhado */
-  cylZ(L,69,7,48,'translateZ(150px)',function(i,a){return 'background:hsl(355 72% '+lum(a,22,22).toFixed(1)+'%);box-shadow:0 0 6px rgba(200,30,40,.35);';}); /* anel vermelho */
-  cylZ(L,64,48,48,'translateZ(178px)',function(i,a){return gray(lum(a,5,10))+'background-image:repeating-linear-gradient(to bottom,rgba(255,255,255,.04) 0 1px,transparent 1px 9px);';});
-  cylZ(L,66,8,48,'translateZ(206px)',function(i,a){return gray(lum(a,12,22),220,5);});               /* aro frontal */
+  cylZ(L,70,14,24,'translateZ(62px)',function(i,a){return gray(lum(a,26,34),220,6);});             /* anel de montagem prateado */
+  cylZ(L,62,86,24,'translateZ(110px)',function(i,a){return gray(lum(a,5,10))+'background-image:repeating-linear-gradient(to bottom,rgba(255,255,255,.05) 0 1px,transparent 1px 7px);';});
+  cylZ(L,68,48,28,'translateZ(118px)',function(i,a){return gray(lum(a,i%2?4:9,i%2?6:16));});            /* anel de foco serrilhado */
+  cylZ(L,69,7,24,'translateZ(150px)',function(i,a){return 'background:hsl(355 72% '+lum(a,22,22).toFixed(1)+'%);box-shadow:0 0 6px rgba(200,30,40,.35);';}); /* anel vermelho */
+  cylZ(L,64,48,24,'translateZ(178px)',function(i,a){return gray(lum(a,5,10))+'background-image:repeating-linear-gradient(to bottom,rgba(255,255,255,.04) 0 1px,transparent 1px 9px);';});
+  cylZ(L,66,8,24,'translateZ(206px)',function(i,a){return gray(lum(a,12,22),220,5);});               /* aro frontal */
   /* elementos de vidro com profundidade */
-  var sizes=[[150,50,'#07061a'],[164,46,'#0b0824'],[178,42,'#120c3a'],[192,36,'#0a0a24']];
+  var sizes=[[160,48,'#0b0824'],[188,38,'#0a0a24']];
   sizes.forEach(function(s){ el('f',place(s[1]*2,s[1]*2,'translateZ('+s[0]+'px)')+'border-radius:50%;background:radial-gradient(circle,'+s[2]+' 0,#02020a 70%,#000 100%);box-shadow:inset 0 0 0 3px rgba(60,50,120,.5);',L); });
   var glass=el('f',place(124,124,'translateZ(204px)')+'border-radius:50%;background:'+
     'radial-gradient(circle at 31% 27%,rgba(255,255,255,.65) 0,rgba(255,255,255,.1) 5%,transparent 11%),'+
@@ -551,15 +551,7 @@ function buildMac(root){
     front:'background:linear-gradient(#2c2c30,#18181b);border-radius:0 0 8px 8px;',
     back:'background:#111113;',left:'background:#141416;',right:'background:#1a1a1d;',bottom:'background:#0a0a0b;'
   });
-  var keys=el('keys','',base.top), i;
-  for(i=0;i<14*4;i++) el('', '',keys).outerHTML; // placeholder removed below
-  keys.innerHTML='';
-  var rows=[14,14,14,14], r, c;
-  for(r=0;r<4;r++) for(c=0;c<rows[r];c++) keys.appendChild(document.createElement('i'));
-  var last=[1,1,1,1,1,1,1,1,1,1,1,1,1,1], sp, k2;
-  for(k2=0;k2<3;k2++){ var ik=document.createElement('i'); keys.appendChild(ik); }
-  sp=document.createElement('i'); sp.className='sp'; keys.appendChild(sp);
-  for(k2=0;k2<4;k2++){ keys.appendChild(document.createElement('i')); }
+  el('keys','',base.top);
   el('pad','',base.top);
   /* dobradiça + tampa */
   var lid=el('g3','transform:translate3d(0,95px,-108px) rotateX(10deg);',root);
